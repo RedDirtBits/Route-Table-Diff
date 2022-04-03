@@ -1,0 +1,5 @@
+10.0.100.5,cisco_ios
+192.168.122.5,cisco_ios
+192.168.122.2,cisco_ios
+172.20.10.2,cisco_ios
+172.20.20.2,cisco_ios
