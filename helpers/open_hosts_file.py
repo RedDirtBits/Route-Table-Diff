@@ -1,4 +1,4 @@
-from logs import logging
+from helpers.logs import logging
 
 def open_device_list(filename):
     """
