@@ -9,7 +9,7 @@ from datetime import datetime
 from helpers.constants import Constant
 from helpers.validation import ip4_validate
 from helpers.ping import ip4_ping
-from helpers.open_file import open_device_list_file
+from helpers.open_hosts_file import open_device_list
 from helpers.logs import logging
 from helpers.commands import RunCommand
 from credentials.credentials import GetCredentials
@@ -26,7 +26,7 @@ logging.info(f"Working Directory: {Constant.script_path()}\n")
 
 # Loop through the file containg the devices to be connected to and create the connection
 # profile
-for device in open_device_list_file(Constant.devices_list() / "devices.txt"):
+for device in open_device_list(Constant.devices_list() / "devices.txt"):
 
     # As a sanity check validate that the IP address is, in fact, a valid IP address then
     # ping it to see if it can be reached.  If either fails, abort the process
