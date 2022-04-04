@@ -18,12 +18,8 @@ class Constant():
     """
 
     @staticmethod
-    def root_path():
-        return pathlib.Path(__file__).parent
-
-    @staticmethod
     def script_path():
-        return pathlib.Path(__file__).parent.parent
+        return pathlib.Path(__file__).parent.parent.resolve()
 
     @staticmethod
     def devices_list():
@@ -38,5 +34,4 @@ class Constant():
     def create_id():
         return "".join(random.choices(string.ascii_letters, k=12))
 
-
-
+print(Constant.script_path())
