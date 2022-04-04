@@ -1,5 +1,5 @@
 import ipaddress
-from helpers.logs import logging
+from logs import logging
 
 def ip4_validate(ipaddr):
     """
