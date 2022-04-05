@@ -33,5 +33,3 @@ class Constant():
     @staticmethod
     def create_id():
         return "".join(random.choices(string.ascii_letters, k=12))
-
-print(Constant.script_path())
