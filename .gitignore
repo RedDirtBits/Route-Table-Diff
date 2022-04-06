@@ -11,7 +11,9 @@ lib/
 *.cfg
 *.log
 *.csv
+# To be removed later after testing
 nexus7k.py
+nexus8k.py
 notes.py
 parse_routes.py
 
