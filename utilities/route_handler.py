@@ -1,5 +1,8 @@
 import pathlib
 import json
+from termios import FF1
+
+from helpers.logs import logging
 
 
 class ProcessRoutes():
@@ -53,6 +56,41 @@ class ProcessRoutes():
         #         f.write(json.dumps(routes))
 
 
+    def compare_routes(self, host: str, original_file: str, migrated_file: str):
+        """
+        compare_routes Compares the pre-migration and post-migration routing tables of a device for the purpose
+        of identifying routes that did not come back afte the migration has completed.
 
-    def compare_routes(self):
-        pass
+        Args:
+            host (str): The hostname of the device from which the routes were pulled
+
+            original_file (str): The file that contains the routing table pre-migration.  A list of dictionaries from
+            the NTC template parsing in .json format
+
+            migrated_file (str): The file that contains the routing table post-migration.  A list of dictionaries from
+            the NTC template parsing in .json format
+
+        Raises:
+            FileExistsError: Error raised if either of the files required are not found
+        """
+        
+        try:
+            # Clearly the files should exit, but you know what assume does to you
+            # For the sake of sanity, let's make sure.  If not, raise an error
+            if not pathlib.Path(original_file).exists() and not pathlib.Path(migrated_file).exists():
+                raise FileExistsError
+            else:
+                # The files are present, open and load them for comparison
+                with open(original_file, "r") as f1, open(migrated_file, "r") as f2:
+                    original = json.load(f1)
+                    migrated = json.load(f2)
+
+                    # The original file is the master file.  Loop through that file and look for routes
+                    # that are in it that are not in the migrated routes file
+                    for i in original:
+                        if i not in migrated:
+                            # For now, just print out the differences.  Needs work
+                            print(i)
+                        
+        except FileExistsError:
+            logging.error(f"{original_file} or {migrated_file} could not be found")
