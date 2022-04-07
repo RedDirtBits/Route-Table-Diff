@@ -1,7 +1,7 @@
 import icmplib
 from helpers.logs import logging
 
-def ip4_ping(ip4_addr, packets = 2):
+def ip4_ping(ip4_addr: str, packets: int = 2):
     """
     ip4_ping A simple pinger that will send icmp packets to the ip address provided using
     the icmplib library

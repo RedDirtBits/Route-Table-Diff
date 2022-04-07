@@ -1,7 +1,7 @@
 import ipaddress
 from helpers.logs import logging
 
-def ip4_validate(ipaddr):
+def ip4_validate(ipaddr: str):
     """
     ip4_validate Validates an IPv4 address using the ipaddress library
 

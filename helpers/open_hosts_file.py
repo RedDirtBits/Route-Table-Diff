@@ -1,6 +1,6 @@
 from helpers.logs import logging
 
-def open_device_list(filename):
+def open_device_list(filename: str):
     """
     open_device_list_file Opens the file containing the information (ip/hostname and device type)
     for the device(s) to be connected to
